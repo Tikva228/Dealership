@@ -1,6 +1,25 @@
 #include <stdio.h>
 #include <stdbool.h>
 
+struct Car {
+    int id;
+    char brand[30];
+    char model[30];
+    char color[30];
+    short year;
+    double price;
+    bool is_available;
+};
+
+void print_car(struct Car car) {
+    printf("Car: %s %s\n", car.brand, car.model);
+    printf("Color: %s\n", car.color);
+    printf("Year: %hd\n", car.year);
+    printf("Price: %.2f\n", car.price);
+    printf("Available: %d\n", car.is_available);
+    printf("\n");
+}
+
 int main(void) {
     char name[] = "First";
     short foundation_year = 2026;
@@ -8,17 +27,7 @@ int main(void) {
     char email[] = "dealership@gmail.com";
     short start_work = 9;
     short end_work = 21;
-    const int car_count = 3;
-
-    struct Car {
-        int id;
-        char brand[30];
-        char model[30];
-        char color[30];
-        short year;
-        double price;
-        bool is_available;
-    };
+    enum { car_count = 3 };
 
     struct Car car[car_count] = {
         {1, "BMB", "BIP-BIP", "White", 2025, 40500.00, true},
@@ -34,11 +43,6 @@ int main(void) {
     printf("\n");
     
     for (int i = 0; i < car_count; i++) {
-        printf("Car: %s %s\n", car[i].brand, car[i].model);
-        printf("Color: %s\n", car[i].color);
-        printf("Year: %hd\n", car[i].year);
-        printf("Price: %.2f\n", car[i].price);
-        printf("Available: %d\n", car[i].is_available);
-        printf("\n");
+        print_car(car[i]);
     }
 }
